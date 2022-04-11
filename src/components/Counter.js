@@ -15,7 +15,7 @@ const Counter = () => {
     }
     return counterOne % 2 === 0;
   }, [counterOne]);
-
+  // use memo cache the result of the function and convert the function into return value
   return (
     <div>
       Counter
