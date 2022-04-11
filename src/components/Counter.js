@@ -1,24 +1,18 @@
-import { useCallback, useMemo, useState } from "react";
+// import { useCallback, useMemo, useState } from "react";
+import { useUserContext } from "context/UserContext";
 import Child from "./Child";
-
+import { MemoizChildA } from "./ChildOption";
 const Counter = () => {
-  const [counterOne, setCounterOne] = useState(0);
-  const [counterTwo, setCounterTwo] = useState(0);
-
-  const incrementOne = () => setCounterOne(counterOne + 1);
-
-  const incrementTwo = () => setCounterTwo(counterTwo + 100000000000);
+  const {
+    counterOne,
+    counterTwo,
+    incrementOne,
+    incrementTwo,
+    memoizPerson,
+    handleClick,
+  } = useUserContext();
 
   // use memo cache the result of the function and convert the function into return value
-
-  const handleClick = useCallback(() => console.log("hello"), []);
-
-  const Person = {
-    name: "angkit",
-    title: "hashamsa",
-  };
-
-  const memoizPerson = useMemo(() => Person, []);
 
   return (
     <div>
@@ -29,6 +23,7 @@ const Counter = () => {
       <h2>counter One ${counterTwo}</h2>
       <button onClick={incrementTwo}>counterOne</button>
       <Child person={memoizPerson} onClick={handleClick} />
+      <MemoizChildA />
     </div>
   );
 };
